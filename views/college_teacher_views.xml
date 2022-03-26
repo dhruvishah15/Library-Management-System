@@ -1,0 +1,98 @@
+<odoo>
+    <record model="ir.ui.view" id="college_teacher_list">
+        <field name="name">college_teacher list</field>
+        <field name="model">college.teacher</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- <tree create="false" delete="false" import="false">-->
+                <field name="teacher_identity"/>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="college_teacher_form">
+        <field name="name">College teacher form</field>
+        <field name="model">college.teacher</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <!-- <form duplicate="false">-->
+<!--                <group>-->
+<!--                    <group>-->
+<!--                        <field name="image_1920" widget="image" class="oe_left oe_image_custom" style="width: 200px; height: 230px;" options="{'preview_image': 'image_512'}"/>-->
+<!--                    </group>-->
+<!--                </group>-->
+                    <group>
+                        <group>
+                        <field name="teacher_identity"/>
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="email"/>
+                        <field name="phone" widget="password"/>
+                        <field name="address" widget="password"/>
+                    </group>
+                    <group>
+                        <field name="gender"/>
+                        <field name="birth_date"/>
+                        <field name="date_time_of_joining" required="1"/>
+                        <field name="department_id"/>
+                        <field name="department_hod"/>
+                        <field name="remarks"/>
+                    </group>
+                </group>
+                    <notebook>
+                        <page name="book" string="Book">
+                            <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="college_teacher_kanban">
+        <field name="name">College teacher kanban</field>
+        <field name="model">college.teacher</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+<!--                <field name="image_1920"/>-->
+                <templates >
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="row">
+<!--                                <div class="col-md-4">-->
+<!--                           <div class="o_kanban_image">-->
+<!--&lt;!&ndash;                           <field name="image_1920"   nolabel="1" widget="image"  class="oe_left oe_avatar" options='{"size": [100, 100]}'/>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                                </div>-->
+                            <div class="col-md-5">
+                                <div class="oe_partner_heading">
+                                    <span style="font-size:14px; font-weight: normal;">
+                                        <div> <field name="teacher_identity"/></div>
+                                        <div> <field name="name"/></div>
+                                        <div> <field name="phone"/></div>
+                                        <div> <field name="email"/></div>
+                                    </span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="college_teacher_action_window">
+        <field name="name">Teacher</field>
+        <field name="res_model">college.teacher</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <menuitem id="college_teacher_menu" parent="college_menu" sequence="1" action="college_teacher_action_window" groups="library_management.group_teacher,library_management.group_school_principal"/>
+</odoo>

@@ -1,0 +1,77 @@
+<odoo>
+    <record model="ir.ui.view" id="college_department_list">
+        <field name="name">college_department list</field>
+        <field name="model">college.department</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!--<tree editable="top">-->
+                <field name="name"/>
+                <field name="hod"/>
+                <field name="description" optional="hide"/>
+                <field name="course_ids" optional="show" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="college_department_form">
+        <field name="name">College student form</field>
+        <field name="model">college.department</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="hod"/>
+                    </group>
+                    <group>
+                        <field name="description" required="1"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page name="student" string="Student">
+                        <field name="student_ids">
+                            <tree>
+                                <field name="student_identity"/>
+                                <field name="name"/>
+                                <field name="department_id"/>
+                                <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                <field name="deposit" sum="Total deposit"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="student_identity"/>
+                                    <field name="name"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                    <page name="course" string="Course">
+                        <field name="course_ids">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="name"/>
+                                <field name="department_id"/>
+                                <field name="sem_id"/>
+                                <field name="description" optional="show"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="name"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="college_department_action_window">
+        <field name="name">Department</field>
+        <field name="res_model">college.department</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Department" id="college_department_menu" parent="college_menu" sequence="10" action="college_department_action_window" groups="library_management.group_teacher,library_management.group_school_principal"/>
+</odoo>

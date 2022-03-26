@@ -1,0 +1,132 @@
+<odoo>
+
+    <menuitem name="Library" id="college_menu"/>
+
+    <record model="ir.ui.view" id="college_list">
+        <field name="name">College student list</field>
+        <field name="model">college.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- <tree create="false" delete="false" import="false">-->
+                <field name="student_identity"/>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="deposit" sum="Total deposit"/>
+<!--                <field name="remarks"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="college_student_kanban">
+        <field name="name">College student kanban</field>
+        <field name="model">college.student</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+<!--                <field name="image_1920"/>-->
+                <templates >
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="row">
+<!--                                <div class="col-md-4">-->
+<!--                                    <div class="o_kanban_image">-->
+<!--                                        <field name="image_1920" nolabel="1" widget="image" class="oe_left oe_avatar" options='{"size": [100, 100]}'/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class="col-md-5">
+                                    <div class="oe_partner_heading">
+                                        <span style="font-size:14px; font-weight: normal;">
+                                            <div> <field name="student_identity"/></div>
+                                            <div> <field name="name"/></div>
+                                            <div> <field name="phone"/></div>
+                                            <div> <field name="email"/></div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="college_student_form">
+        <field name="name">College student form</field>
+        <field name="model">college.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="image_1920" widget="image" class="oe_left oe_image_custom"-->
+<!--                               style="width: 200px; height: 230px;" options="{'preview_image': 'image_512'}"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+                    <group>
+                        <group>
+                            <field name="student_identity"/>
+                            <field name="name"/>
+                            <field name="active"/>
+                            <field name="gender"/>
+                            <field name="birth_date"/>
+                            <field name="email"/>
+                            <field name="phone" widget="password"/>
+                            <field name="address" widget="password"/>
+                        </group>
+                        <group>
+                            <field name="department_id" widget="checkbox" options="{'no_open': True, 'no_quick_create': True, 'no_create_edit' : True}"/>
+                            <field name="department_hod"/>
+                            <field name="date_time_of_joining" required="1"/>
+                            <field name="deposit"/>
+                            <field name="fine_paid"/>
+                            <field name="sem_id"/>
+                            <field name="mark"/>
+                            <field name="result" attrs="{'invisible':[('mark', '=', 0)]}"/>
+                            <field name="remarks"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="book" string="Book">
+                            <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- <record id='college_student_view_search' model='ir.ui.view'>
+        <field name="name">college.student.search</field>
+        <field name="model">college.student</field>
+        <field name="arch" type="xml">
+            <search string="Student">
+                <field name="student_identity"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="department_id"/>
+                <filter name="pass_student" string="Pass" domain="[('result', '=', 'pass')]" help="Passed Member"/>
+                <separator/>
+                <filter name="today" string="Today"
+                        domain="[('date_time_of_joining', '&gt;=', datetime.datetime.now().replace(hour=0, minute=0, second=0)),
+                                 ('date_time_of_joining', '&lt;=', datetime.datetime.now().replace(hour=23, minute=59, second=59))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_department_id" context="{'group_by': 'department_id'}" string="Department"/>
+                    <filter name="groupby_result" context="{'group_by': 'result'}" string="Result"/>
+                </group>
+            </search>
+        </field>
+    </record> -->
+
+    <record model="ir.actions.act_window" id="college_student_action_window">
+        <field name="name">Student</field>
+        <field name="res_model">college.student</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+     <menuitem id="college_college_menu" parent="college_menu" sequence="1" action="college_student_action_window" groups="library_management.group_student,library_management.group_teacher,library_management.group_school_principal"/>
+
+</odoo>

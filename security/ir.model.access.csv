@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_college_student_for_principal,access_college_student,model_college_student,library_management.group_school_principal,1,1,1,1
+access_college_student_for_teacher,access_college_student,model_college_student,library_management.group_teacher,1,1,1,1
+access_college_student_for_student,access_college_student,model_college_student,library_management.group_student,1,0,0,0
+access_college_teacher_for_principal,access_college_teacher,model_college_teacher,library_management.group_school_principal,1,1,1,1
+access_college_teacher_for_teacher,access_college_teacher,model_college_teacher,library_management.group_teacher,1,0,0,0
+access_library_book,access_library_book,model_library_book,,1,1,1,1
+access_college_curriculum_for_principal,access_college_curriculum,model_college_curriculum,library_management.group_school_principal,1,1,1,1
+access_college_curriculum_for_teacher,access_college_curriculum,model_college_curriculum,library_management.group_teacher,1,0,0,0
+access_college_sem1,access_college_sem1,model_college_sem1,,1,1,1,1
+access_college_sem2,access_college_sem2,model_college_sem2,,1,1,1,1
+access_college_sem3,access_college_sem3,model_college_sem3,,1,1,1,1
+access_college_sem4,access_college_sem4,model_college_sem4,,1,1,1,1
+access_college_sem5,access_college_sem5,model_college_sem5,,1,1,1,1
+access_college_sem6,access_college_sem6,model_college_sem6,,1,1,1,1
+access_college_sem7,access_college_sem7,model_college_sem7,,1,1,1,1
+access_college_sem8,access_college_sem8,model_college_sem8,,1,1,1,1

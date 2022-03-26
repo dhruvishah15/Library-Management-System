@@ -1,0 +1,211 @@
+<odoo>
+
+    <record model="ir.ui.view" id="college_curriculum_list">
+        <field name="name">college curriculum list</field>
+        <field name="model">college.curriculum</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="hod"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="college_curriculum_form">
+        <field name="name">College curriculum form</field>
+        <field name="model">college.curriculum</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name"/>
+                         <field name="hod"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Sem - 1">
+                        <field name="sem_id1">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="course_name"/>
+                                <field name="course_description"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="course_id"/>
+                                        <field name="course_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="course_description"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page string="Sem - 2">
+                        <field name="sem_id2">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="course_name"/>
+                                <field name="course_description"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="course_id"/>
+                                        <field name="course_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="course_description"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page string="Sem - 3">
+                        <field name="sem_id3">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="course_name"/>
+                                <field name="course_description"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="course_id"/>
+                                        <field name="course_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="course_description"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page string="Sem - 4">
+                        <field name="sem_id4">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="course_name"/>
+                                <field name="course_description"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="course_id"/>
+                                        <field name="course_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="course_description"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page string="Sem - 5">
+                        <field name="sem_id5">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="course_name"/>
+                                <field name="course_description"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="course_id"/>
+                                        <field name="course_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="course_description"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page string="Sem - 6">
+                        <field name="sem_id6">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="course_name"/>
+                                <field name="course_description"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="course_id"/>
+                                        <field name="course_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="course_description"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page string="Sem - 7">
+                        <field name="sem_id7">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="course_name"/>
+                                <field name="course_description"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="course_id"/>
+                                        <field name="course_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="course_description"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                    <page string="Sem - 8">
+                        <field name="sem_id8">
+                            <tree>
+                                <field name="course_id"/>
+                                <field name="course_name"/>
+                                <field name="course_description"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="course_id"/>
+                                        <field name="course_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="course_description"/></group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="college_curriculum_action_window">
+        <field name="name">Curriculum</field>
+        <field name="res_model">college.curriculum</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="college_curriculum_menu" parent="college_menu" sequence="9" action="college_curriculum_action_window" groups="library_management.group_teacher,library_management.group_school_principal"/>
+</odoo>
